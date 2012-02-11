@@ -54,11 +54,8 @@ int Peg::topSize() const
 
 std::ostream& operator<<(std::ostream& os, const Peg& peg)
 {
-	for (int i = 0; i < peg.count(); i++) {
-		for (int j = 0; j < peg.rings[i]; j++ ) {
-			std::cout << "*";
-		}
-		std::cout << std::endl;
+	for (int i = peg.count(); i > 0; i--) {
+		std::cout << std::string(peg.rings[i], '*') << std::endl;
 	}
 	return os;
 }

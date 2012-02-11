@@ -18,22 +18,12 @@ inline void callWithMax(const T& a, const T&b)
 
 int main()
 {
-	Peg peg = Peg(14);
-	Peg foo = Peg(5);
-	std::cout << "peg.count(): " << peg.count() << std::endl;
-	std::cout << "peg.topSize(): " << peg.topSize() << std::endl;
-
-	for (int i = 0; i < 15; i++) {
+	Peg peg = Peg();
+	while (peg.count() > 5) {
 		peg.remove();
 	}
-
-	peg.add(31);
-	std::cout << "peg.topSize(): " << peg.topSize() << "\tcount: " << peg.count() << std::endl;
-	peg.add(22);
-	peg.add(1);
-	
+	peg.add(2);
 	std::cout << peg;
-	std::cout << foo;
 	
 	return 0;
 }

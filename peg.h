@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 #ifndef PEG_H
 #define PEG_H
