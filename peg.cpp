@@ -1,15 +1,18 @@
 #include "peg.h"
 
 Peg::Peg(int size)
+: size(size)
 {
 	if (size > MAXSIZE) {
 		std::cout << "Constructor size greater than " << MAXSIZE << std::endl;
 		exit(1);
 	}
 	
-	Peg::size = size;
-
-	/* 0 index = size, [size - 1] index = 1 */
+	for (int i = 0; i < MAXSIZE; i++) {
+		rings[i] = 0;
+	}	
+	
+	/* rings[0] = size, rings[size - 1] = 1 */
 	for (int i = 0, j = size; i < size; i++, j--) {
 		rings[i] = j;
 	}
@@ -17,19 +20,21 @@ Peg::Peg(int size)
 
 void Peg::add(const int addedRing)
 {
-	if (size == MAXSIZE || rings[size - 1] == 1 || addedRing >= rings[size - 1]) {
-		std::cout << "Cannot add another ring." << std::endl;
-		return;
+	if (size > 0) {
+		if (size == MAXSIZE || addedRing >= rings[size - 1]) {
+			std::cout << "Cannot add ring of size: " << addedRing << ". Must be less than: " << rings[size - 1] << "." << std::endl;
+			return;
+		}
 	}
 	
-	rings[size - 1] = addedRing;
 	size++;
+	rings[size - 1] = addedRing;
 }
 
 void Peg::remove()
 {
 	if (size == 0) {
-		std::cout << "Cannot remove any more." << std::endl;
+		std::cout << "Cannot remove any more, no pegs are left." << std::endl;
 		return;
 	}
 	
