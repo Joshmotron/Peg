@@ -2,15 +2,12 @@
 #include <cstdlib>
 #include <string>
 
-#ifndef PEG_H
-#define PEG_H
-
-#define MAXSIZE 64
+const unsigned int MAXSIZE = 63;
 
 class Peg
 {
   public:
-		Peg(int size=64);
+		Peg(int size=64); /* Size of ring on peg */
     int count() const;
     int topSize() const;
     void add(const int addedRing);
@@ -19,7 +16,6 @@ class Peg
     friend std::ostream& operator<< (std::ostream&, const Peg&);
 
   private:
-    int size;
+    int size; /* Number of rings on peg */
     int rings[MAXSIZE];
 };
-#endif
