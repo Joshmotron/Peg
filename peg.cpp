@@ -27,8 +27,7 @@ void Peg::add(const int addedRing)
 		}
 	}
 	
-	size++;
-	rings[size - 1] = addedRing;
+	rings[size++] = addedRing;
 }
 
 void Peg::remove()
@@ -38,8 +37,7 @@ void Peg::remove()
 		return;
 	}
 	
-	rings[size - 1] = 0;
-	size--;
+	rings[--size] = 0;
 }
 
 int Peg::count() const
